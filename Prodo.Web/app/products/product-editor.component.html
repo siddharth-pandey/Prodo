@@ -1,0 +1,59 @@
+﻿<div *ngIf="product">
+    <div class="card">
+        <img *ngIf="product.imageUrl" class="card-img-top product-card-image-edit-view" [src]="product.imageUrl" alt="Product Image Url">
+        <fieldset>
+            <legend class="center-text-align">Product Detail  <button [hidden]="isEditModeEnabled" class="btn btn-primary btn-sm" (click)="isEditModeEnabled=true;"><i class="fa fa-pencil" aria-hidden="true"></i></button></legend>
+        </fieldset>
+        <br/>
+        <fieldset class="card-block" [disabled]="!isEditModeEnabled">
+            <div class="form-group row">
+                <label class="col-3 col-form-label">Name</label>
+                <div class="col-9">
+                    <input class="form-control" type="text" [(ngModel)]="product.name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-3 col-form-label">Description</label>
+                <div class="col-9">
+                    <textarea class="form-control" [(ngModel)]="product.description"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-3 col-form-label">Cost</label>
+                <div class="col-9">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon">£</div>
+                        <input class="form-control" type="number" min="1" [(ngModel)]="product.cost">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-3 col-form-label">Product Category</label>
+                <div class="col-9">
+                    <select class="form-control" [(ngModel)]="product.categoryId">
+                        <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-3 col-form-label">Image Url</label>
+                <div class="col-9">
+                    <input class="form-control" type="text" [(ngModel)]="product.imageUrl">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-3 col-form-label">Is out of stock?</label>
+                <div class="col-9">
+                    <input type="checkbox" [(ngModel)]="product.outOfStock">
+                </div>
+            </div>
+            <div class="form-group row" [hidden]="!isEditModeEnabled">
+                <label class="col-3 col-form-label"></label>
+                <div class="col-9">
+                    <button class="btn btn-primary" (click)="saveProduct(product)"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                    <a class="btn btn-secondary" routerLink="/products"><i class="fa fa-times" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>

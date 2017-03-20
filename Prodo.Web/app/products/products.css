@@ -1,0 +1,23 @@
+﻿.product-card {
+    text-align: center;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.product-card-image {
+    width: 200px;
+    height: 200px;
+    margin: 1em auto;
+}
+
+.product-card-image-edit-view {
+    width: 300px;
+    height: 300px;
+    margin: 1em auto;
+}
+
+.center-text-align {
+    text-align: center;
+}
