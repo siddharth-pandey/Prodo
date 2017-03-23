@@ -27,11 +27,17 @@ export class ProductListComponent implements OnInit {
     }
 
     fetchProducts() {
-        this.productServiceervice.getProducts().subscribe(result => this.products = result);
+        this.productServiceervice.getProducts().subscribe(result => {
+            this.products = result;
+        },
+        error => this.handleError(error));
     }
 
     fetchCategories() {
-        this.categoryService.getCategories().subscribe(result => this.categories = result);
+        this.categoryService.getCategories().subscribe(result => {
+            this.categories = result;
+        },
+            error => this.handleError(error));
     }
 
     onProductSelect(product: Product) {
@@ -42,4 +48,7 @@ export class ProductListComponent implements OnInit {
         this.productServiceervice.getProductsByCategoryId(category.id).subscribe(result => this.products = result);
     }
 
+    handleError(err: any) {
+        console.log('The error is '+ err);
+    }
 }

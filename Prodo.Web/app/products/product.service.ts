@@ -5,7 +5,10 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 export class Product {
-    constructor() { }
+    constructor() {
+        this.id = -1;
+    }
+
     id: number;
     categoryId?: number;
     name: string;
@@ -18,8 +21,13 @@ export class Product {
 @Injectable()
 export class ProductService {
     baseUrl: string = 'http://localhost:11681/api/products';
-    
+
     constructor(private http: Http) { }
+
+    isNewProduct(product: Product) {
+        return product.id === -1;
+    }
+
 
     getProductsByCategoryId(categoryId: number): Observable<Product[]> {
         return this.http.get(`http://localhost:11681/api/Categories/${categoryId}/Products`)
@@ -36,10 +44,14 @@ export class ProductService {
     }
 
     saveProduct(product: Product): Observable<any> {
-        return this.http.post(this.baseUrl, product).map((response: Response) => response.json());
+        if (this.isNewProduct(product)) {
+            return this.http.post(this.baseUrl, product).map((response: Response) => response.json());
+        }
+
+        return this.http.put(`${this.baseUrl}/${product.id}`, product).map((response: Response) => response.json());
     }
 
     deleteProduct(id: number): Observable<any> {
-        return this.http.delete(this.baseUrl, id).map((response: Response) => response.json());
+        return this.http.delete(`${this.baseUrl}/${id}`).map((response: Response) => response.json());
     }
 }

@@ -1,8 +1,8 @@
 {
-  "server": {
-    "baseDir": "",
-    "routes": {
-      "/node_modules": "node_modules"
-    }
-  }
+    "server": {
+        "routes": {
+            "/node_modules": "node_modules"
+        }
+    },
+    "startPath":  "index.html"
 }

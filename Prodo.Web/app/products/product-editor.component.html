@@ -2,7 +2,11 @@
     <div class="card">
         <img *ngIf="product.imageUrl" class="card-img-top product-card-image-edit-view" [src]="product.imageUrl" alt="Product Image Url">
         <fieldset>
-            <legend class="center-text-align">Product Detail  <button [hidden]="isEditModeEnabled" class="btn btn-primary btn-sm" (click)="isEditModeEnabled=true;"><i class="fa fa-pencil" aria-hidden="true"></i></button></legend>
+            <legend class="center-text-align">
+                Product Detail
+                <button [hidden]="isEditModeEnabled" class="btn btn-primary btn-sm" (click)="isEditModeEnabled=true;"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                <button class="btn btn-primary" [hidden]="!isEditModeEnabled" (click)="deleteProduct(product.id)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </legend>
         </fieldset>
         <br/>
         <fieldset class="card-block" [disabled]="!isEditModeEnabled">

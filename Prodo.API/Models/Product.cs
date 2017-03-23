@@ -5,15 +5,8 @@ using System.Web;
 
 namespace Prodo.API.Models
 {
-    public class Product
+    public class Product : BaseEntity
     {
-        public Product()
-        {
-            Id = -1;
-        }
-
-        public int Id { get; set; }
-
         public int CategoryId { get; set; }
 
         public string Name { get; set; }
