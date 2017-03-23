@@ -53,4 +53,13 @@ export class ProductEditorComponent {
     setupCategories(): void {
         this.categoryService.getCategories().subscribe((categories: Category[]) => this.categories = categories);
     }
+
+    deleteProduct(productId: number) {
+        this.productService.deleteProduct(productId).subscribe(() => {
+            this.isEditModeEnabled = false;
+            this.toasterService.popAsync('success', 'Product has been deleted Successfully!');
+
+            this.router.navigate(['/products']);
+        });
+    }
 }
