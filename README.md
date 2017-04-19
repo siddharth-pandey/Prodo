@@ -1,7 +1,7 @@
 # Prodo
 Prodo - an eCommerce App using Angular 2, ASP.NET Web API V2, Node.js, TypeScript, Bootstrap 4, etc.
 
-Prodo uses ASP.NET Web API V2 for REST services and Angular 2 for front-end application. 
+Prodo uses ASP.NET Web API V2 for REST services and Angular 2 for front-end application. To watch the video tutorials for this project, [please visit my Youtube Channel](https://www.youtube.com/playlist?list=PL6KFB-5xV5TpS_X0lS2DeeRkgON31Uz8S).
 
 I've used Visual Studio 2015 for the projects. You can use any IDE or code-editor for Angular 2 application but you will need to use Visual Studio to open the
 Web API project.
